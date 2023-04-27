@@ -3,6 +3,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   margin: 0;
 }
+
+/* .wordle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+} */
+

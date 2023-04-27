@@ -4,16 +4,27 @@ import './Board.css'
 interface BoardProps {
     word: string
     attempted: number
+    reset: boolean
+    setReset: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Board: React.FC<BoardProps> = ({ word, attempted }) => {
-    const [matrix, setMatrix] = useState([
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-    ])
+const initialStateMatrix = [
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', '']
+]
+
+const Board: React.FC<BoardProps> = ({ word, attempted, reset, setReset }) => {
+    const [matrix, setMatrix] = useState(initialStateMatrix)
+
+    useEffect(() => { 
+        if (reset) {
+            setMatrix([...initialStateMatrix])
+            setReset(false)
+        }
+    }, [reset])
 
     useEffect(() => {
         setMatrix(prevMatrix => {
@@ -24,20 +35,19 @@ const Board: React.FC<BoardProps> = ({ word, attempted }) => {
     }, [word, attempted])
 
     const renderMatrix = () => {
-        const grid = []
-        for (let i = 0; i < 5; i++) {
-            const row = []
-            for (let j = 0; j < 5; j++) {
-                const value = matrix[i][j]
-                row.push(<div key={`${i}-${j}`} className="board__cell">{value ? value : ""}</div>)
-            }
-            grid.push(<div key={i} className="board__row">{row}</div>)
-        }
-        return grid
+        return matrix.map((row, i) => (
+            <div key={i} className="board__row">
+                {row.map((value, j) => (
+                    <div key={`${i}-${j}`} className="board__cell">
+                        {value || ""}
+                    </div>
+                ))}
+            </div>
+        ))
     }
 
 
-    return <div className="board mb-5">{renderMatrix()}</div>
+    return <div className="board mb-4">{renderMatrix()}</div>
 }
 
 export default Board
