@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react'
 import Board from '../Board/Board'
-import useTimer from '../../hook/useTimer'
+import useTimer from '../../hooks/useTimer'
+import words from 'an-array-of-spanish-words'
+interface SpanishWords extends Array<string> { includes: (searchValue: string, fromIndex?: number) => boolean }
+const spanishWords = words as SpanishWords
 
-const lastChance = 4
-const largeWord = 5
-const secondsInFiveMinutes = 300
+const LAST_ATTEMP_CHANGE = 4 as const
+const MAX_LARGE_WORDS = 5 as const
+const TIMER_SECONDS = 300 as const
 
 const Wordle = () => {
   const [guess, setGuess] = useState('')
   const [accomplishedAttempts, setAccomplishedAttempts] = useState(0)
   const [resetMatrix, setResetMatrix] = useState(false)
-  const { seconds, resetTimer } = useTimer(secondsInFiveMinutes)
+  const { seconds, resetTimer } = useTimer(TIMER_SECONDS)
 
   useEffect(() => {
     if (seconds === 0) {
@@ -21,13 +24,14 @@ const Wordle = () => {
   }, [seconds])
 
   const checkWord = () => {
-    if (guess.trim().length !== largeWord) return
+    if (guess.trim().length !== MAX_LARGE_WORDS) return
+    if (!spanishWords.includes(guess.trim())) return
     const reset = () => {
       setResetMatrix(true)
       return 0
     }
     setGuess('')
-    setAccomplishedAttempts(accomplishedAttempts === lastChance ? reset() : accomplishedAttempts + 1)
+    setAccomplishedAttempts(accomplishedAttempts === LAST_ATTEMP_CHANGE ? reset() : accomplishedAttempts + 1)
   }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^a-zA-Z]/g, '')
