@@ -6,13 +6,13 @@ import { getModelForClass, modelOptions, prop } from "@typegoose/typegoose"
     }
 })
 export class User {
-    @prop()
+    @prop({ type: String })
     name: string
-    @prop()
+    @prop({ type: Number })
     games: number
-    @prop()
+    @prop({ type: Number })
     wins: number
-    @prop()
+    @prop({ type: Number })
     losses: number
 }
 

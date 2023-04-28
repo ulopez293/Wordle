@@ -25,9 +25,8 @@ app.get('/users', async (req: Request, res: Response) => {
 
 app.post('/user', async (req: Request, res: Response) => {
     try {
-        console.log(req.body)
         const { name } = req.body
-        console.log(name)
+        console.log(req.body)
         if (name === undefined || name === null || name === ``) throw new Error
         let user = await User.findOne({ name })
         if (!user) {
@@ -35,26 +34,27 @@ app.post('/user', async (req: Request, res: Response) => {
             await user.save()
         }
         const token = `Bearer ` + jwt.sign({ id: name }, Secret.Key)
-    
-        res.json({
-            status: 200,
-            message: 'Datos recibidos correctamente',
-            token,
-            user
-        })
-        
+        res.json({ status: 200, message: 'Datos recibidos correctamente', token, user })
     } catch (error) {
         res.status(500).json({ status: 500, message: error })
     }
 })
 
-app.put('/user', validateToken, (req: Request, res: Response) => {
-    // Obtén los datos enviados en el cuerpo de la solicitud
-    const data = req.body
-    // Realiza alguna operación con los datos recibidos
-    // ...
-    // Devuelve una respuesta en formato JSON
-    res.json({ status: 200, message: 'Datos recibidos correctamente' })
+//protected
+app.put('/user', validateToken, async (req: Request, res: Response) => {
+    try {
+        const {name, games, wins, losses } = req.body
+        if (name === undefined || name === null || name === ``) throw new Error
+        const user = await User.findOne({ name })
+        if (!user) throw new Error('User not found')
+        user.games = games
+        user.wins = wins
+        user.losses = losses
+        await user.save()
+        res.json({ status: 200, message: 'Datos recibidos correctamente' })
+    } catch (error) {
+        res.status(500).json({ status: 500, message: error })
+    }
 })
 
 
