@@ -43,7 +43,7 @@ app.post('/user', async (req: Request, res: Response) => {
 //protected
 app.put('/user', validateToken, async (req: Request, res: Response) => {
     try {
-        const {name, games, wins, losses } = req.body
+        const {name, games, wins, losses, word } = req.body
         if (name === undefined || name === null || name === ``) throw new Error
         const user = await User.findOne({ name })
         if (!user) throw new Error('User not found')
@@ -56,8 +56,6 @@ app.put('/user', validateToken, async (req: Request, res: Response) => {
         res.status(500).json({ status: 500, message: error })
     }
 })
-
-
 
 
 connectionDB()

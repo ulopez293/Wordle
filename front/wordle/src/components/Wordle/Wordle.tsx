@@ -17,14 +17,13 @@ const spanishWords = words as SpanishWords
 const getRandomWord = (wordsArray: SpanishWords) => {
   const fiveLetterWords = wordsArray.filter(word => word.length === 5)
   const randomIndex = Math.floor(Math.random() * fiveLetterWords.length)
-  return fiveLetterWords[randomIndex];
+  return fiveLetterWords[randomIndex]
 }
-
 
 const Wordle = () => {
   const navigate = useNavigate()
   const [userData, setUserData] = useAtom(userDataAtom)
-  const [tokenData, setTokenData] = useAtom(tokenDataAtom)
+  const [tokenData, ] = useAtom(tokenDataAtom)
   const [guess, setGuess] = useState('')
   const [accomplishedAttempts, setAccomplishedAttempts] = useState(0)
   const [resetMatrix, setResetMatrix] = useState(false)
@@ -35,7 +34,8 @@ const Wordle = () => {
   const [localWins, setLocalWins] = useState(0)
   const [localLosses, setLocalLosses] = useState(0)
 
-  const [wordToGuess, setWordToGuess] = useState(`perro`)//getRandomWord(spanishWords)
+  const [wordToGuess, setWordToGuess] = useState(getRandomWord(spanishWords))
+  const [readywittedWord, setReadywittedWord] = useState(``)
 
   useEffect(() => { if (userData.name === ``) navigate('/') }, [userData])
 
@@ -56,14 +56,16 @@ const Wordle = () => {
           "Content-Type": "application/json",
           "authorization": tokenData
         },
-        body: JSON.stringify({ name: userData.name, games: userData.games, wins: userData.wins, losses: userData.losses })
+        body: JSON.stringify({ name: userData.name, games: userData.games, wins: userData.wins, losses: userData.losses, word: readywittedWord})
       })
       await response.json()
+      setWordToGuess(getRandomWord(spanishWords))
       setResetMatrix(true)
       setAccomplishedAttempts(0)
       resetTimer()
       setResult(false)
       setShowModal(false)
+      setReadywittedWord(``)
     } catch (error) {
       console.log(error)
     }
@@ -84,6 +86,7 @@ const Wordle = () => {
       setResult(true)
       setLocalWins(localWins + 1)
       setUserData({ ...userData, wins: userData.wins + 1 })
+      setReadywittedWord(wordToGuess)
     }
 
     setGuess('')
@@ -94,7 +97,7 @@ const Wordle = () => {
     setGuess(value)
   }
 
-  const resultShow = () => {
+  const seeResult = () => {
     setUserData({ ...userData, games: userData.games + 1 })
     setShowModal(true)
   }
@@ -114,11 +117,13 @@ const Wordle = () => {
           <input type="text" value={guess} onChange={handleChange} maxLength={5} />
           <button onClick={checkWord}>Check</button>
         </div> :
-        <button onClick={resultShow}>Ver Resultado</button>
+        <button onClick={seeResult}>See Result</button>
       }
       {/* teclado opcional */}{/* <Keyboard style={{ position: `absolute`, width: `100%`, left: `0`, right: `0`, bottom: `auto` }}/> */}
       <Modal isOpen={showModal} onRequestClose={() => setShowModal(false)} contentLabel="modal" >
         <div className='text-center'>
+          <br />
+          <h4>- Estadisticas -</h4>
           <hr />
           <p className="font-weight-bold">User: {userData.name}</p>
           <p className="font-weight-bold">Total Wins: {userData.wins}</p>

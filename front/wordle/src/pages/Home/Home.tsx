@@ -34,6 +34,7 @@ const Home = () => {
             })
             const data: ResponseUser = await response.json()
             setTokenData(data.token)
+            setUserData(data.user)
             navigate('/game')
             //mutate(Server.Host + `users`)
         } catch (error) {
