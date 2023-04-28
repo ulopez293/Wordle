@@ -23,7 +23,7 @@ const Wordle = () => {
 
   const [wordToGuess, setWordToGuess] = useState(`Perro`)
 
-  useEffect(() => { if (userData === ``) navigate('/') }, [userData])
+  useEffect(() => { if (userData.name === ``) navigate('/') }, [userData])
 
   useEffect(() => {
     if (seconds === 0) {
@@ -60,8 +60,8 @@ const Wordle = () => {
     <div>
       <p className="mb-4 mt-3">
         <small>
-          User: {userData} <br />
-          Minutes: {Math.floor(seconds / 60)}:{seconds % 60 < 10 ? '0' + (seconds % 60) : seconds % 60} |
+          User: {userData.name} | wins:  | losses: <br />
+          Next Word Time: {Math.floor(seconds / 60)}:{seconds % 60 < 10 ? '0' + (seconds % 60) : seconds % 60} |
           Attemps: {accomplishedAttempts}
         </small>
       </p>
@@ -70,13 +70,8 @@ const Wordle = () => {
         <input type="text" value={guess} onChange={handleChange} maxLength={5} />
         <button onClick={checkWord}>Check</button>
       </div>
-      {/* <Keyboard style={{
-        position: `absolute`,
-        width: `100%`,
-        left: `0`,
-        right: `0`,
-        bottom: `auto`
-      }}/> */}
+      {/* teclado opcional */}
+      {/* <Keyboard style={{ position: `absolute`, width: `100%`, left: `0`, right: `0`, bottom: `auto` }}/> */}
     </div>
   )
 }
