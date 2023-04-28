@@ -11,7 +11,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json())
 const Home = () => {
     const navigate = useNavigate()
     const [userData, setUserData] = useAtom(userDataAtom)
-    const [tokenData, setTokenData] = useAtom(tokenDataAtom)
+    const [, setTokenData] = useAtom(tokenDataAtom)
 
     const { data, error, isLoading } = useSWR<{ users: User[] }>(Server.Host + `users`, fetcher)
     if (error) return <h1>An error has occurred.</h1>
@@ -30,7 +30,7 @@ const Home = () => {
             const response = await fetch(Server.Host + `user`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name: userData })
+                body: JSON.stringify({ name: userData.name })
             })
             const data: ResponseUser = await response.json()
             setTokenData(data.token)
