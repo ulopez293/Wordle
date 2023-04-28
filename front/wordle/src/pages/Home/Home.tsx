@@ -16,9 +16,7 @@ const Home = () => {
     const { data, error, isLoading } = useSWR<{ users: User[] }>(Server.Host + `users`, fetcher)
     if (error) return <h1>An error has occurred.</h1>
     if (isLoading) return <h1>Loading...</h1>
-
     console.log(data)
-
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserData({ ...userData, name: event.target.value})

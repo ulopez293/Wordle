@@ -4,6 +4,7 @@ import { validateToken } from './middleware/validateToken'
 import cors from 'cors'
 import { connectionDB } from './database/connectionDB'
 import User from './models/User'
+import Word from './models/Word'
 import jwt from 'jsonwebtoken'
 import { Secret } from './enums/Secret'
 
@@ -18,6 +19,15 @@ app.get('/users', async (req: Request, res: Response) => {
     try {
         const users = await User.find()
         res.json({ status: 200, users })
+    } catch (error) {
+        res.status(500).json({ status: 500, message: error })
+    }
+})
+
+app.get('/words', async (req: Request, res: Response) => {
+    try {
+        const words = await Word.find()
+        res.json({ status: 200, words })
     } catch (error) {
         res.status(500).json({ status: 500, message: error })
     }
@@ -51,6 +61,20 @@ app.put('/user', validateToken, async (req: Request, res: Response) => {
         user.wins = wins
         user.losses = losses
         await user.save()
+
+
+        if (word == undefined || word == null || word == ``) { console.log(word) } else {
+            let winnerWord = await Word.findOne({ word })
+            if (!winnerWord) {
+                winnerWord = new Word({ word, readywitted: 0 })
+                await winnerWord.save()
+            } else {
+                winnerWord.readywitted = winnerWord.readywitted + 1
+                await winnerWord.save()
+            }
+        }
+
+
         res.json({ status: 200, message: 'Datos recibidos correctamente' })
     } catch (error) {
         res.status(500).json({ status: 500, message: error })
