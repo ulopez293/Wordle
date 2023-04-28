@@ -7,19 +7,6 @@ input[type="text"] {
   margin-right: 8px;
 }
 
-/* button {
-  padding: 8px 16px;
-  font-size: 24px;
-  border: none;
-  background-color: #0077ff;
-  color: white;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0055cc;
-} */
-
 .input-container {
   display: flex;
   align-items: center;
@@ -74,4 +61,12 @@ button:hover {
   .board__cell {
     max-width: 100px;
   }
+}
+
+.board__cell--green {
+  background-color: #5cb85c;
+}
+
+.board__cell--yellow {
+  background-color: #f0ad4e;
 }

@@ -25,14 +25,9 @@ const Navbar = () => {
         </button>
         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav">
-            <li className={`nav-item ${pathname === '/' ? 'active' : ''}`}>
-              <Link className="nav-link" to="/" onClick={handleLinkClick}>
+            <li className={`nav-item ${pathname === '/score' ? 'active' : ''}`}>
+              <Link className="nav-link" to="/score" onClick={handleLinkClick}>
                 Score Table
-              </Link>
-            </li>
-            <li className={`nav-item ${pathname === '/game' ? 'active' : ''}`}>
-              <Link className="nav-link" to="/game" onClick={handleLinkClick}>
-                Game
               </Link>
             </li>
           </ul>
