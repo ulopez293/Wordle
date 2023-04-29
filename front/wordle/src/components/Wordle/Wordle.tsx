@@ -94,7 +94,7 @@ const Wordle = () => {
   }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^a-zA-Z]/g, '')
-    setGuess(value)
+    setGuess(value.toLocaleLowerCase())
   }
 
   const seeResult = () => {
