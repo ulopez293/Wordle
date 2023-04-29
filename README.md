@@ -7,10 +7,11 @@ https://dainty-faloodeh-1ed1d8.netlify.app/
 ## Cómo Jugar
 
 1. Abre el juego en tu navegador web.
-2. Se elegira una palabra al azar para que la adivines.
-3. Ingresa una palabra de adivinanza y haz clic en "Check".
-4. El juego te proporcionará pistas para ayudarte a adivinar la palabra. Una letra en verde significa que la letra está en la palabra y está en la posición correcta. Una letra en amarillo significa que la letra está en la palabra pero en una posición incorrecta. Las letras sin color significan que la letra no está en la palabra.
-5. Continúa adivinando hasta que hayas adivinado la palabra o hasta que se te acaben los intentos.
+2. Ingresa un nombre de usuario.
+3. Se elegira una palabra al azar para que la adivines.
+4. Ingresa una palabra de adivinanza y haz clic en "Check".
+5. El juego te proporcionará pistas para ayudarte a adivinar la palabra. Una letra en verde significa que la letra está en la palabra y está en la posición correcta. Una letra en amarillo significa que la letra está en la palabra pero en una posición incorrecta. Las letras sin color significan que la letra no está en la palabra.
+6. Continúa adivinando hasta que hayas adivinado la palabra o hasta que se te acaben los intentos.
 
 ## Cómo Contribuir
 
