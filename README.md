@@ -20,3 +20,4 @@ Si deseas contribuir a este proyecto, ¡sería genial! Simplemente me puedes don
 ## Problemas
 
 Si encuentras algún problema con el juego, no dudes en abrir un issue. ¡Haré lo posible por solucionarlo lo antes posible!
+
