@@ -1,0 +1,20 @@
+# Juego de Wordle
+
+¡Bienvenido al Juego de Wordle! Este es un juego clásico de adivinanzas de palabras en el que tienes que adivinar una palabra en un número limitado de intentos. Puedes probar el juego aquí: 
+https://backwordle-production.up.railway.app/
+
+## Cómo Jugar
+
+1. Abre el juego en tu navegador web.
+2. Elige una palabra para que el oponente la adivine.
+3. Ingresa una palabra de adivinanza y haz clic en "Adivinar".
+4. El juego te proporcionará pistas para ayudarte a adivinar la palabra. Una letra en verde significa que la letra está en la palabra y está en la posición correcta. Una letra en amarillo significa que la letra está en la palabra pero en una posición incorrecta. Las letras grises significan que la letra no está en la palabra.
+5. Continúa adivinando hasta que hayas adivinado la palabra o hasta que se te acaben los intentos.
+
+## Cómo Contribuir
+
+Si deseas contribuir a este proyecto, ¡sería genial! Simplemente crea un pull request y lo revisaré tan pronto como pueda. 
+
+## Problemas
+
+Si encuentras algún problema con el juego, no dudes en abrir un issue. ¡Haré lo posible por solucionarlo lo antes posible!
