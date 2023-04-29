@@ -9,7 +9,7 @@ import jwt from 'jsonwebtoken'
 import { Secret } from './enums/Secret'
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 app.use(cors())
 app.use(express.json())
 app.use(morgan(`dev`))

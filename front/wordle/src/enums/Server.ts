@@ -1,3 +1,3 @@
 export enum Server {
-    Host = 'http://localhost:3000/'
+    Host = 'https://backwordle-production.up.railway.app/'
 }
