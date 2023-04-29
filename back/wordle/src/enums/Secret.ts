@@ -1,3 +1,3 @@
 export enum Secret {
-    Key = "mysecretkey",
+    Key = "your_secret_key",
 }
