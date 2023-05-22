@@ -4,8 +4,7 @@
 
 https://dainty-faloodeh-1ed1d8.netlify.app/
 
-Detalles:
-
+## Detalles:
 Implementaciones y complementos detenidos 
 Tu plan incluye $ 5.00 GRATIS de recursos todos los meses con un límite de tiempo de ejecución de 500 horas . Lo que se agote primero. Los proyectos se cierran cuando se alcanza un límite y deben reiniciarse manualmente el próximo mes. 
 
