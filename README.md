@@ -2,9 +2,10 @@
 
 ¡Bienvenido al Juego de Wordle! Este es un juego clásico de adivinanzas de palabras en el que tienes que adivinar una palabra en un número limitado de intentos. Puedes probar el juego aquí:
 
+## Despliegue:
+
 https://dainty-faloodeh-1ed1d8.netlify.app/
 
-## Detalles:
 Implementaciones y complementos detenidos 
 Tu plan incluye $ 5.00 GRATIS de recursos todos los meses con un límite de tiempo de ejecución de 500 horas . Lo que se agote primero. Los proyectos se cierran cuando se alcanza un límite y deben reiniciarse manualmente el próximo mes. 
 
